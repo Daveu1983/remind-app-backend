@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Daveu1983/remind-app-backend/issues"
   },
-  "homepage": "https://github.com/Daveu1983/remind-app-backend#readme"
+  "homepage": "https://github.com/Daveu1983/remind-app-backend#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "serverless-http": "^1.9.0"
+  }
 }
