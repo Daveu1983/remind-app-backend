@@ -1,0 +1,19 @@
+{
+  "name": "reminder-app-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Daveu1983/remind-app-backend.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Daveu1983/remind-app-backend/issues"
+  },
+  "homepage": "https://github.com/Daveu1983/remind-app-backend#readme"
+}
