@@ -7,6 +7,7 @@ app.get('/tasks', function (request, response) {
   const username = request.query.username;
 
   const someJson = {
+    message:"Hello " + username + "your tasks are", 
     tasks = [
       {taskDescription: "buy milk", completed: false},
       {taskDescription: "buy eggs", completed: false},
