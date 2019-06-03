@@ -51,5 +51,24 @@ app.post("/tasks", function(request, response) {
     }
   });
 });
+app.delete("/tasks", function(request, response) {
+  const itemToBeDeleted = request.body;
+  connection.query('DELETE FROM items WHERE ?', itemToBeDeleted, function (error, results, fields) {
+    if (error) {
+      console.log("Error deleting items", error);
+      response.status(500).json({
+        error: error
+      });
+    }
+    else{
+      let deletedMessage = JSON.stringify(itemToBeDeleted).replace(/\"/, '')
+      .replace(/"/, '').replace(/:/, ' ').replace(/{/, '').replace(/}/, '')
+       + " has been deleted"
+      response.json({
+        message: deletedMessage
+      });
+    }
+  });
+});
 
 module.exports.handler = serverless(app);
