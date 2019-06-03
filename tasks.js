@@ -70,5 +70,24 @@ app.delete("/tasks", function(request, response) {
     }
   });
 });
+app.put("/tasks", function(request, response){
+  const itemToBeCompleted = request.body
+  connection.query('UPDATE items SET completed = true WHERE ?', itemToBeCompleted, function(error, results, fields){
+    if (error) {
+      console.log("Error completing item", error);
+      response.status(500).json({
+        error: error
+      });
+    }
+    else{
+      let completedMessage = JSON.stringify(itemToBeCompleted).replace(/\"/, '')
+      .replace(/"/, '').replace(/:/, ' ').replace(/{/, '').replace(/}/, '')
+       + " has been completed"
+      response.json({
+        message: completedMessage
+      });
+    }
+  });
+});
 
 module.exports.handler = serverless(app);
