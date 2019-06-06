@@ -30,6 +30,22 @@ app.get("/users", function(request, response) {
     }
   });
 });
+app.post("/users", function(request, response) {
+    const userToBeSaved = request.body;
+    connection.query('INSERT INTO user SET ?', userToBeSaved, function (error, results, fields) {
+      if (error) {
+        console.log("Error saving user", error);
+        response.status(500).json({
+          error: error
+        });
+      }
+      else{
+        response.json({
+          ItemId:results.insertId
+        });
+      }
+    });
+  });
 
 
 module.exports.handler = serverless(app);

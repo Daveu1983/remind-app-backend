@@ -40,3 +40,7 @@ functions:
           path: users
           method: get
           cors: true
+      - http:
+          path: users
+          method: post
+          cors: true
