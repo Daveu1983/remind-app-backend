@@ -51,9 +51,9 @@ app.post("/tasks", function(request, response) {
     }
   });
 });
-app.delete("/tasks", function(request, response) {
-  const itemToBeDeleted = request.body;
-  connection.query('DELETE FROM items WHERE ?', itemToBeDeleted, function (error, results, fields) {
+app.delete("/tasks/:itemId", function(request, response) {
+  const itemToBeDeleted = request.params.itemId;
+  connection.query('DELETE FROM items WHERE itemId = ?', itemToBeDeleted, function (error, results, fields) {
     if (error) {
       console.log("Error deleting items", error);
       response.status(500).json({

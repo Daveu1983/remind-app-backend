@@ -22,7 +22,7 @@ functions:
           method: post
           cors: true
       - http:
-          path: tasks
+          path: tasks/{itemId}
           method: delete
           cors: true
       - http:
