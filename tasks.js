@@ -71,8 +71,11 @@ app.delete("/tasks/:itemId", function(request, response) {
   });
 });
 app.put("/tasks", function(request, response){
-  const itemToBeCompleted = request.body
-  connection.query('UPDATE items SET completed = true WHERE ?', itemToBeCompleted, function(error, results, fields){
+  const itemToBeUpdated = request.body.itemID
+  const itemToBeCompleted = request.body.completed
+  const itemUpdatedDescription = request.body.itemDescription
+  connection.query('UPDATE items SET itemDescription = ?, completed = ? WHERE itemID = ?', [itemUpdatedDescription, 
+    itemToBeCompleted, itemToBeUpdated], function(error, results, fields){
     if (error) {
       console.log("Error completing item", error);
       response.status(500).json({
@@ -80,7 +83,7 @@ app.put("/tasks", function(request, response){
       });
     }
     else{
-      let completedMessage = JSON.stringify(itemToBeCompleted).replace(/\"/, '')
+      let completedMessage = JSON.stringify(itemToBeUpdated).replace(/\"/, '')
       .replace(/"/, '').replace(/:/, ' ').replace(/{/, '').replace(/}/, '')
        + " has been completed"
       response.json({
